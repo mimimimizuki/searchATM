@@ -23,8 +23,8 @@ f = open('yuucho.csv','a')
 writer = csv.writer(f)
 names = set(names)
 for URL in URLs:
-    r = requests.get(URL)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    re = requests.get(URL)
+    soup = BeautifulSoup(re.text, 'html.parser')
 
     table = soup.select_one('#searchShopListData')
 

@@ -1,5 +1,3 @@
-from calendar import week
-from crypt import methods
 from flask import Flask, request
 import math, datetime
 import pandas as pd
@@ -57,7 +55,7 @@ def main():
             # distance = ((float(latitude)-float(lats[i]))*M)**2 + ((float(longitude)-float(lngs[i]))*N*math.cos(lat_average))**2
             distance = math.sqrt((91000*(float(lngs[i])-float(longitude)))**2 + (111000*(float(lats[i])-float(latitude)))**2)
             if distance <= (80*minute):
-                nearATMs.append({'code':CODES[bank], 'address':file[columns[2]].tolist()[i], 'longitude':lngs[i],
+                nearATMs.append({'bank_name':bank[:-4], 'address':file[columns[2]].tolist()[i], 'longitude':lngs[i],
                                     'latitude':lats[i], 'name':names[i], 'start_time':start_times[i], 'end_time':end_times[i],
                                     'ATM_type':ATM_type, 'commission':file[columns[9]].tolist()[i]})
     res = {'res':nearATMs}
